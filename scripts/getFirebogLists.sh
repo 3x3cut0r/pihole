@@ -11,7 +11,7 @@
 #
 
 ### GLOBAL VARS ###
-listDir=/lists
+listDir=lists
 
 
 ### FUNCTIONS ###
