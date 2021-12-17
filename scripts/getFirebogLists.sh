@@ -11,7 +11,7 @@
 #
 
 ### GLOBAL VARS ###
-listDir=lists
+listDir=${GITHUB_WORKSPACE}/lists
 
 
 ### FUNCTIONS ###
@@ -20,4 +20,5 @@ function createListDir() {
 }
 
 ### START OF SCRIPT ###
+echo "getFirebogLists.sh"
 createListDir
