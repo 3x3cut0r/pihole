@@ -35,8 +35,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run getFirebogLists.sh
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh" && "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
-          pwd > test.txt
+          chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
+          # run a script
+          "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
       - name: Commit files
         run: |
           git config --local user.email ${{ secrets.EMAIL }}
