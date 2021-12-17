@@ -27,8 +27,10 @@ function getFirebogLists {
 }
 
 function updateTimeStamp {
-    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
+    # at least one file must be updated to prevent git action errors
+    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.timestamp
 }
+
 
 ### START OF SCRIPT ###
 createListDir
