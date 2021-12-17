@@ -43,6 +43,9 @@ jobs:
         run: |
           git config --local user.email ${{ secrets.EMAIL }}
           git config --local user.name ${{ secrets.USERNAME }}
+          git add "${GITHUB_WORKSPACE}/lists"
           git commit -m "updated lists by getFirebogLists.sh" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.ref }}
