@@ -20,16 +20,17 @@ function createListDir() {
     mkdir -p $listDir
 }
 
-function createTimeStamp {
-    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
-}
-
 function getFirebogLists {
     wget -c https://v.firebog.net/hosts/lists.php?type=tick -O $listDir/firebog_tick.list
     wget -c https://v.firebog.net/hosts/lists.php?type=nocross -O $listDir/firebog_nocross.list
     wget -c https://v.firebog.net/hosts/lists.php?type=all -O $listDir/firebog_all.list
 }
 
+function updateTimeStamp {
+    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
+}
+
 ### START OF SCRIPT ###
 createListDir
-createTimeStamp
+getFirebogLists
+updateTimeStamp
