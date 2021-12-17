@@ -11,7 +11,7 @@
 #
 
 ### GLOBAL VARS ###
-listDir=${GITHUB_WORKSPACE}/lists
+listDir=lists
 
 
 ### FUNCTIONS ###
@@ -22,3 +22,4 @@ function createListDir() {
 ### START OF SCRIPT ###
 pwd
 createListDir
+touch $listDir/list.php
