@@ -21,7 +21,7 @@ function createListDir() {
 }
 
 function createTimeStamp {
-    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
+    date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
 }
 
 ### START OF SCRIPT ###
