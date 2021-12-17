@@ -40,5 +40,8 @@ jobs:
           # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
 
+          # create lists directory
+          mkdir -p "${GITHUB_WORKSPACE}/lists/
+          
           # run script
           "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
