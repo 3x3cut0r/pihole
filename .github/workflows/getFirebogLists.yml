@@ -29,15 +29,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Run getFirebogLists.sh
         run: |
           # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
-
-          # create lists directory
-          mkdir -p "${GITHUB_WORKSPACE}/lists" && touch "${GITHUB_WORKSPACE}/lists/whitelist"
-          
           # run script
-          # "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
+          "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
+      - name: Commit files
+        run: |
+          git config --local user.email ${{ secrets.GITHUB_EMAIL }}
+          git config --local user.name ${{ secrets.GITHUB_USERNAME }}
+          git commit -m "updated lists by getFirebogLists.sh" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
