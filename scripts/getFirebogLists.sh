@@ -19,7 +19,10 @@ function createListDir() {
     mkdir -p $listDir
 }
 
+function createTimeStamp {
+    date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
+}
+
 ### START OF SCRIPT ###
-pwd
 createListDir
-touch $listDir/list.php
+createTimeStamp
