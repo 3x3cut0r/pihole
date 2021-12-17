@@ -37,7 +37,7 @@ jobs:
           chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
 
           # create lists directory
-          mkdir -p "${GITHUB_WORKSPACE}/lists" && cp -R dist "${GITHUB_WORKSPACE}/lists"
+          mkdir -p lists && cp -R lists "${GITHUB_WORKSPACE}/lists"
           
           # run script
           "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
