@@ -20,5 +20,5 @@ function createListDir() {
 }
 
 ### START OF SCRIPT ###
-echo "getFirebogLists.sh"
+pwd
 createListDir
