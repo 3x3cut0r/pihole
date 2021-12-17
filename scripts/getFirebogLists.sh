@@ -11,6 +11,7 @@
 #
 
 ### GLOBAL VARS ###
+TZ='Europe/Berlin'
 listDir=lists
 
 
@@ -20,7 +21,7 @@ function createListDir() {
 }
 
 function createTimeStamp {
-    date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
+    TZ=$TZ date +"%Y-%m-%d %H:%m:%S %Z" > $listDir/.last_updated.txt
 }
 
 ### START OF SCRIPT ###
