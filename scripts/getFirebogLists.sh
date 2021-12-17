@@ -2,7 +2,7 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.01
+# Version:  0.02
 # Date:     2021-12-17
 #
 # Description:
