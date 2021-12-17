@@ -41,8 +41,8 @@ jobs:
           "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
       - name: Commit files
         run: |
-          git config --local user.email ${{ secrets.GITHUB_EMAIL }}
-          git config --local user.name ${{ secrets.GITHUB_USERNAME }}
+          git config --local user.email ${{ secrets.EMAIL }}
+          git config --local user.name ${{ secrets.USERNAME }}
           git commit -m "updated lists by getFirebogLists.sh" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
