@@ -21,6 +21,7 @@ function createListDir() {
 }
 
 function getFirebogLists {
+    # firebog list types, see https://v.firebog.net/hosts/lists.php
     wget -c https://v.firebog.net/hosts/lists.php?type=tick -O $listDir/firebog_tick.list
     wget -c https://v.firebog.net/hosts/lists.php?type=nocross -O $listDir/firebog_nocross.list
     wget -c https://v.firebog.net/hosts/lists.php?type=all -O $listDir/firebog_all.list
