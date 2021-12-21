@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        description: 'run action manually' 
+        description: 'run action manually'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,15 +35,15 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run getFirebogLists.sh
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
+          chmod +x "${GITHUB_WORKSPACE}/scripts/getLists.sh"
           # run a script
-          "${GITHUB_WORKSPACE}/scripts/getFirebogLists.sh"
+          "${GITHUB_WORKSPACE}/scripts/getLists.sh"
       - name: Commit files
         run: |
           git config --local user.email ${{ secrets.EMAIL }}
           git config --local user.name ${{ secrets.USERNAME }}
           git add -A
-          git commit -m "updated lists by getFirebogLists.sh" -a
+          git commit -m "updated lists by getLists.sh" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
