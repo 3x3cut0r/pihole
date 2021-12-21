@@ -2,7 +2,7 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.05
+# Version:  0.06
 # Date:     2021-12-21
 #
 # Description:
@@ -78,6 +78,6 @@ function updateTimeStamp {
 
 
 ### START OF SCRIPT ###
-createDirs
+createListDirs
 getFirebogLists
 updateTimeStamp
