@@ -2,7 +2,7 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.06
+# Version:  0.07
 # Date:     2021-12-21
 #
 # Description:
@@ -45,13 +45,14 @@ function getFirebogSectionList () {                                             
     rm -f section.html
 }
 
-function getFirebogLists {
+function getLists {
 
     # firebog list types, see https://v.firebog.net/hosts/lists.php
     wget -c https://v.firebog.net/hosts/lists.php?type=tick -O $blacklistDir/firebog_tick.list
     wget -c https://v.firebog.net/hosts/lists.php?type=nocross -O $blacklistDir/firebog_nocross.list
     wget -c https://v.firebog.net/hosts/lists.php?type=all -O $blacklistDir/firebog_all.list
 
+    # get section lists from firebog
     wget -c https://firebog.net -O firebog.html
     getFirebogSectionList 'Suspicious Lists'
     getFirebogSectionList 'Advertising Lists'
@@ -66,8 +67,28 @@ function preparePiholeUpdatelistsConf {
     # get pihole-updatelists-template.conf
     wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists-template.conf -O pihole-updatelists.conf
 
-    # add adlists
-    sed -i 's/ADLISTS_URL=""//g'
+    # ADLISTS_URL
+    adlist="https://raw.githubusercontent.com/3x3cut0r/pihole/main/blacklists/firebog_tick.list"
+    sed -i "s#ADLISTS_URL=\"\"#ADLISTS_URL=\"$adlist\"#g" pihole-updatelists.conf # on macos: sed -i '' "..." pihole-updatelists.conf
+
+    # WHITELIST_URL
+    whitelist="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/default.list"
+    whitelist+=" https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt" # dont foget the leading space!
+    whitelist+=" https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/optional-list.txt"
+    whitelist+=" https://raw.githubusercontent.com/mmotti/pihole-regex/master/whitelist.list"
+    sed -i "s#WHITELIST_URL=\"\"#WHITELIST_URL=\"$whitelist\"#g" pihole-updatelists.conf
+
+    # REGEX_WHITELIST_URL
+    whitelistRegex="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/regex/default.list"
+    sed -i "s#REGEX_WHITELIST_URL=\"\"#REGEX_WHITELIST_URL=\"$whitelistRegex\"#g" pihole-updatelists.conf
+
+    # BLACKLIST_URL
+    blacklist=""
+    sed -i "s#BLACKLIST_URL=\"\"#BLACKLIST_URL=\"$blacklist\"#g" pihole-updatelists.conf
+
+    # REGEX_BLACKLIST_URL
+    blacklistRegex="https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"
+    sed -i "s#REGEX_BLACKLIST_URL=\"\"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
 }
 
 function updateTimeStamp {
@@ -79,5 +100,6 @@ function updateTimeStamp {
 
 ### START OF SCRIPT ###
 createListDirs
-getFirebogLists
+getLists
+preparePiholeUpdatelistsConf
 updateTimeStamp
