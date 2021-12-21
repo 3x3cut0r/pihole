@@ -29,16 +29,16 @@ function getFirebogSectionList () {                                             
     sectionLength=$(tail -n +"$sectionBegin" firebog.html | grep -wn "</ul>" | cut -d: -f1 | head -n 1)     # 19
     tail -n +"$sectionBegin" firebog.html | head -n +"$sectionLength" > section.html                        # section only in html
 
-    # get greenURLs
-    sectionFileName=$(echo "Firebog $1 Green.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
+    # get tickURLs
+    sectionFileName=$(echo "Firebog $1 tick.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
     touch $blacklistDir/$sectionFileName
     cat section.html | grep 'li class="bdTick"' | awk -F 'href="' '{print $3 FS ""}' | cut -d'"' -f1 > $blacklistDir/$sectionFileName # cut urls with ticks
-    # get orangeURLs
-    sectionFileName=$(echo "Firebog $1 Orange.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
+    # get nocrossURLs
+    sectionFileName=$(echo "Firebog $1 nocross.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
     touch $blacklistDir/$sectionFileName
     cat section.html | grep '<li>' | awk -F 'href="' '{print $3 FS ""}' | cut -d'"' -f1 > $blacklistDir/$sectionFileName # cut urls without ticks and crosses
-    # get redURLs
-    sectionFileName=$(echo "Firebog $1 Red.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
+    # get crossURLs
+    sectionFileName=$(echo "Firebog $1 cross.list" | tr '[:upper:]' '[:lower:]' | sed 's/\ lists//g' | sed 's/\&amp\;/and/g' | sed 's/\ /_/g')
     touch $blacklistDir/$sectionFileName
     cat section.html | grep 'li class="bdCross"' | awk -F 'href="' '{print $3 FS ""}' | cut -d'"' -f1 > $blacklistDir/$sectionFileName # cut urls with crosses
 
@@ -61,10 +61,13 @@ function getFirebogLists {
     rm -f firebog.html
 }
 
-function getPiholeUpdatelistsConf {
+function preparePiholeUpdatelistsConf {
 
     # get pihole-updatelists-template.conf
     wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists-template.conf -O pihole-updatelists.conf
+
+    # add adlists
+    sed -i 's/ADLISTS_URL=""//g'
 }
 
 function updateTimeStamp {
