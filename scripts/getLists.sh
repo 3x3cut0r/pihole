@@ -2,7 +2,7 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.11
+# Version:  0.12
 # Date:     2021-12-22
 #
 # Description:
@@ -17,7 +17,7 @@ whitelistDir=whitelists
 
 
 ### FUNCTIONS ###
-function createListDirs() {
+function createDirs() {
     mkdir -p $blacklistDir/regex
     mkdir -p $whitelistDir/regex
     mkdir -p template
@@ -104,7 +104,7 @@ function updateTimeStamp {
 
 
 ### START OF SCRIPT ###
-createListDirs
+createDirs
 getLists
 preparePiholeUpdatelistsConf
 updateTimeStamp
