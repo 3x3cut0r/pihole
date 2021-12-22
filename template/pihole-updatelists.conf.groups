@@ -138,7 +138,8 @@ ADLISTS_URL="https://raw.githubusercontent.com/blocklistproject/Lists/master/you
 GROUP_ID=-27
 COMMENT="blocklistproject/youtube"
 
-[blp_everything]
-ADLISTS_URL="https://raw.githubusercontent.com/blocklistproject/Lists/master/everything.txt"
-GROUP_ID=-28
-COMMENT="blocklistproject/everything"
+; this list is about 100mb big and should not be added
+; [blp_everything]
+; ADLISTS_URL="https://raw.githubusercontent.com/blocklistproject/Lists/master/everything.txt"
+; GROUP_ID=-999
+; COMMENT="blocklistproject/everything"

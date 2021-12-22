@@ -2,7 +2,7 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.12
+# Version:  0.13
 # Date:     2021-12-22
 #
 # Description:
@@ -92,9 +92,10 @@ function preparePiholeUpdatelistsConf {
     blacklistRegex="https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"
     sed -i "s#REGEX_BLACKLIST_URL=\"\"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
 
+    # currently not working
     # add blocklistproject groups
-    wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O template/pihole-updatelists.conf.groups
-    cat template/pihole-updatelists.conf.groups >> pihole-updatelists.conf
+    # wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O template/pihole-updatelists.conf.groups
+    # cat template/pihole-updatelists.conf.groups >> pihole-updatelists.conf
 }
 
 function updateTimeStamp {
