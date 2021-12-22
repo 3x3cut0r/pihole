@@ -66,6 +66,7 @@ function getLists {
 function preparePiholeUpdatelistsConf {
 
     # get pihole-updatelists-template.conf
+    rm -f pihole-updatelists.conf
     wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists-template.conf -O pihole-updatelists.conf
 
     # ADLISTS_URL
