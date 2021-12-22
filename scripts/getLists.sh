@@ -20,6 +20,7 @@ whitelistDir=whitelists
 function createListDirs() {
     mkdir -p $blacklistDir/regex
     mkdir -p $whitelistDir/regex
+    mkdir -p template
 }
 
 function getFirebogSectionList () {                                                                        # getFirebogSectionList 'Suspicious Lists'
@@ -91,8 +92,8 @@ function preparePiholeUpdatelistsConf {
     sed -i "s#REGEX_BLACKLIST_URL=\"\"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
 
     # add blocklistproject groups
-    wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O pihole-updatelists.conf.groups
-    cat pihole-updatelists.conf.groups >> pihole-updatelists.conf
+    wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O template/pihole-updatelists.conf.groups
+    cat template/pihole-updatelists.conf.groups >> pihole-updatelists.conf
 }
 
 function updateTimeStamp {
