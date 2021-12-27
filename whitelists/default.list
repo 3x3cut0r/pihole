@@ -220,6 +220,9 @@ tagger.opecloud.com
 appboy-images.com
 rest.iad-03.braze.com
 
+# Captcha Resolver
+api-secure.solvemedia.com
+
 # Cannon Printers
 gdlp01.c-wss.com
 
