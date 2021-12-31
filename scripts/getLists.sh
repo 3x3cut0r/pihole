@@ -90,7 +90,7 @@ function preparePiholeUpdatelistsConf {
 
     # REGEX_BLACKLIST_URL
     blacklistRegex="https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"
-    sed -i "s#REGEX_BLACKLIST_URL=\"\"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
+    sed -i "s#REGEX_BLACKLIST_URL=\"\ \"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
 
     # currently not working
     # add blocklistproject groups
