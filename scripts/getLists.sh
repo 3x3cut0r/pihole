@@ -2,8 +2,8 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.13
-# Date:     2021-12-22
+# Version:  0.14
+# Date:     2021-12-31
 #
 # Description:
 #  this script pulls the adlists from https://firebog.net and stores them
@@ -82,7 +82,7 @@ function preparePiholeUpdatelistsConf {
 
     # REGEX_WHITELIST_URL
     whitelistRegex="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/regex/default.list"
-    sed -i "s#REGEX_WHITELIST_URL=\"\"#REGEX_WHITELIST_URL=\"$(whitelistRegex)\"#g" pihole-updatelists.conf
+    sed -i "s#REGEX_WHITELIST_URL=\"\ \"#REGEX_WHITELIST_URL=\"$(whitelistRegex)\"#g" pihole-updatelists.conf
 
     # BLACKLIST_URL
     blacklist=""
