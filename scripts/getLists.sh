@@ -82,7 +82,7 @@ function preparePiholeUpdatelistsConf {
 
     # REGEX_WHITELIST_URL
     whitelistRegex="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/regex/default.list"
-    sed -i "s#REGEX_WHITELIST_URL=\"\"#REGEX_WHITELIST_URL=\"$whitelistRegex\"#g" pihole-updatelists.conf
+    sed -i "s#REGEX_WHITELIST_URL=\"\"#REGEX_WHITELIST_URL=\"$(whitelistRegex)\"#g" pihole-updatelists.conf
 
     # BLACKLIST_URL
     blacklist=""
