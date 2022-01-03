@@ -96,7 +96,7 @@ function preparePiholeUpdatelistsConf {
     echo -e "\n[3x3_WL_Filehoster]" >> pihole-updatelists.conf
     echo -e 'WHITELIST_URL="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/filehoster.list"' >> pihole-updatelists.conf
     echo -e 'GROUP_ID=-330' >> pihole-updatelists.conf
-    echo -e 'COMMENT="3x3cut0r Whitelist"' >> pihole-updatelists.conf
+    echo -e 'COMMENT="3x3_WL_Filehoster"' >> pihole-updatelists.conf
 
     # currently not working
     # add blocklistproject groups
