@@ -2,8 +2,8 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.14
-# Date:     2021-12-31
+# Version:  0.15
+# Date:     2022-01-03
 #
 # Description:
 #  this script pulls the adlists from https://firebog.net and stores them
@@ -92,10 +92,17 @@ function preparePiholeUpdatelistsConf {
     blacklistRegex="https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list"
     sed -i "s#REGEX_BLACKLIST_URL=\"\ \"#REGEX_BLACKLIST_URL=\"$blacklistRegex\"#g" pihole-updatelists.conf
 
+    # add 3x3cut0r's Section
+    echo -e "\n[3x3_WL_Filehoster]" >> pihole-updatelists.conf
+    echo -e 'WHITELIST_URL="https://raw.githubusercontent.com/3x3cut0r/pihole/main/whitelists/filehoster.list"' >> pihole-updatelists.conf
+    echo -e 'GROUP_ID=-330' >> pihole-updatelists.conf
+    echo -e 'COMMENT="3x3cut0r Whitelist"' >> pihole-updatelists.conf
+
     # currently not working
     # add blocklistproject groups
     # wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O template/pihole-updatelists.conf.groups
     # cat template/pihole-updatelists.conf.groups >> pihole-updatelists.conf
+
 }
 
 function updateTimeStamp {
