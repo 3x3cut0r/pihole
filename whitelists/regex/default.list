@@ -7,9 +7,6 @@
 (\.|^)redd\.it$
 (\.|^)reddit\.com$
 
-# Skype
-s{1..5}.symcb.com
-
 # Twitter
 (\.|^)twimg\.com$
 
