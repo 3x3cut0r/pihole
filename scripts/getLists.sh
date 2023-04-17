@@ -2,8 +2,8 @@
 #
 # Author:   Julian Reith
 # E-Mail:   julianreith@gmx.de
-# Version:  0.15
-# Date:     2022-01-03
+# Version:  0.16
+# Date:     2023-04-17
 #
 # Description:
 #  this script pulls the adlists from https://firebog.net and stores them
@@ -49,12 +49,12 @@ function getFirebogSectionList () {                                             
 function getLists {
 
     # firebog list types, see https://v.firebog.net/hosts/lists.php
-    wget -c https://v.firebog.net/hosts/lists.php?type=tick -O $blacklistDir/firebog_tick.list
-    wget -c https://v.firebog.net/hosts/lists.php?type=nocross -O $blacklistDir/firebog_nocross.list
-    wget -c https://v.firebog.net/hosts/lists.php?type=all -O $blacklistDir/firebog_all.list
+    wget -O - https://v.firebog.net/hosts/lists.php?type=tick > $blacklistDir/firebog_tick.list
+    wget -O - https://v.firebog.net/hosts/lists.php?type=nocross > $blacklistDir/firebog_nocross.list
+    wget -O - https://v.firebog.net/hosts/lists.php?type=all > $blacklistDir/firebog_all.list
 
     # get section lists from firebog
-    wget -c https://firebog.net -O firebog.html
+    wget -O - https://firebog.net > firebog.html
     getFirebogSectionList 'Suspicious Lists'
     getFirebogSectionList 'Advertising Lists'
     getFirebogSectionList 'Tracking &amp; Telemetry Lists'
@@ -67,7 +67,7 @@ function preparePiholeUpdatelistsConf {
 
     # get pihole-updatelists-template.conf
     rm -f pihole-updatelists.conf
-    wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists-template.conf -O pihole-updatelists.conf
+    wget -O - https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists-template.conf > pihole-updatelists.conf
 
     # ADLISTS_URL
     adlist="https://raw.githubusercontent.com/3x3cut0r/pihole/main/blacklists/firebog_tick.list"
@@ -100,7 +100,7 @@ function preparePiholeUpdatelistsConf {
 
     # currently not working
     # add blocklistproject groups
-    # wget -c https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups -O template/pihole-updatelists.conf.groups
+    # wget -O - https://raw.githubusercontent.com/3x3cut0r/pihole/main/template/pihole-updatelists.conf.groups > template/pihole-updatelists.conf.groups
     # cat template/pihole-updatelists.conf.groups >> pihole-updatelists.conf
 
 }
