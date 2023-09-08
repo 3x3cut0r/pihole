@@ -1,0 +1,12 @@
+[Unit]
+Description=Custom service to query top domains for pihole
+After=pihole-FTL.service unbound.service
+Requires=pihole-FTL.service unbound.service
+
+[Service]
+ExecStart=/opt/pihole-top100-keepalive.sh
+Restart=always
+User=pihole
+
+[Install]
+WantedBy=multi-user.target
