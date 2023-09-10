@@ -16,7 +16,7 @@ while true; do
     CACHE_MIN_TTL=$(grep "cache-min-ttl" /etc/unbound/unbound.conf.d/pi-hole.conf | awk '{print $2}')
     TOTAL_PAUSE=$((CACHE_MIN_TTL / 2))
     
-    # request all domains in the domains.txt to renew ttl from unbound
+    # request all domains in the domains-top100.txt to renew ttl from unbound
     for domain in $(cat /etc/pihole/domains-top100.txt); do
        dig @127.0.0.1 -p 5335 $domain # request to unbound directly -> does not falsify the top permitted domain list
        sleep 1 # sleep 1 to not ratelimit root dns server
