@@ -2,7 +2,7 @@
 
 while true; do
     # clean up domains-top100.txt
-    echo "" > /etc/pihole/domains-top100.txt
+    > /etc/pihole/domains-top100.txt
     
     # add custom domains from keepalive.txt
     if [ -f /etc/pihole/domains-keepalive.txt ]; then
