@@ -21,7 +21,8 @@ while true; do
     # request all domains in the domains.txt to renew ttl from unbound
     for domain in $(cat /etc/pihole/domains.txt); do
        # request to unbound directly -> does not falsify the top permitted domain list
-       dig @127.0.0.1 -p 5335 $domain | grep -A 1 ";; ANSWER SECTION:" | tail -n 1
+       dig @127.0.0.1 -p 5335 -t a $domain | grep -A 1 ";; ANSWER SECTION:" | tail -n 1
+       dig @127.0.0.1 -p 5335 -t aaaa $domain | grep -A 1 ";; ANSWER SECTION:" | tail -n 1
        sleep 1 # sleep 1 to not ratelimit root dns server
     done
 
