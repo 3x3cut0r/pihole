@@ -48,6 +48,10 @@ ipv6.msftncsi.com
 ### Google               #
 ##########################
 
+# Google Ad Services
+adservice.google.com
+googleadservices.com
+
 # Google Chrome (updater)
 dl.google.com
 
@@ -254,6 +258,9 @@ directvapplications.hb.omtrdc.net
 s.zkcdn.net
 js.maxmind.com
 
+# Discord
+click.discord.com
+
 # Tracking Packages sent with DPD
 tracking.dpd.de
 
@@ -302,6 +309,7 @@ placeholdit.imgix.net
 
 # Playstation 5 "Recently Played Games" and Trophies
 telemetry-console.api.playstation.com
+smetrics.aem.playstation.com
 
 # Plex
 plex.tv
