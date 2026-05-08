@@ -49,6 +49,9 @@ ipv6.msftncsi.com
 ### Google               #
 ##########################
 
+# Compression
+tunnel.googlezip.net
+
 # Google Ad Services
 adservice.google.com
 googleadservices.com
