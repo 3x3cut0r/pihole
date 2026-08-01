@@ -392,6 +392,9 @@ spclient.wg.spotify.com
 apresolve.spotify.com
 api-tv.spotify.com
 
+# Tailscale
+tailscale.com
+
 # Twitter
 twitter.com
 upload.twitter.com
