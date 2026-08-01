@@ -395,6 +395,8 @@ api-tv.spotify.com
 # Tailscale
 tailscale.com
 console.tailscale.com
+login.tailscale.com
+wwwv2.tailscale.com
 
 # Twitter
 twitter.com
